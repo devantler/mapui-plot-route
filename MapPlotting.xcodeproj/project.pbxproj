@@ -11,6 +11,10 @@
 		0A3144EA26F4929900EEFEA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3144E926F4929900EEFEA0 /* ContentView.swift */; };
 		0A3144EC26F4929900EEFEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A3144EB26F4929900EEFEA0 /* Assets.xcassets */; };
 		0A3144EF26F4929900EEFEA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A3144EE26F4929900EEFEA0 /* Preview Assets.xcassets */; };
+		0A3144F726F492C700EEFEA0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3144F626F492C700EEFEA0 /* MapView.swift */; };
+		0A3144FB26F497DE00EEFEA0 /* Running.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0A3144FA26F497DD00EEFEA0 /* Running.csv */; };
+		0A3144FF26F4E71900EEFEA0 /* AnnotationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3144FE26F4E71900EEFEA0 /* AnnotationItem.swift */; };
+		0A31450126F4E84800EEFEA0 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A31450026F4E84800EEFEA0 /* RouteManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		0A3144E926F4929900EEFEA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A3144EB26F4929900EEFEA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A3144EE26F4929900EEFEA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0A3144F626F492C700EEFEA0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0A3144FA26F497DD00EEFEA0 /* Running.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Running.csv; sourceTree = "<group>"; };
+		0A3144FE26F4E71900EEFEA0 /* AnnotationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationItem.swift; sourceTree = "<group>"; };
+		0A31450026F4E84800EEFEA0 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +59,13 @@
 		0A3144E626F4929900EEFEA0 /* MapPlotting */ = {
 			isa = PBXGroup;
 			children = (
+				0A3144FD26F4E70800EEFEA0 /* Models */,
+				0A3144FA26F497DD00EEFEA0 /* Running.csv */,
+				0A3144F526F492A600EEFEA0 /* Views */,
 				0A3144E726F4929900EEFEA0 /* MapPlottingApp.swift */,
-				0A3144E926F4929900EEFEA0 /* ContentView.swift */,
 				0A3144EB26F4929900EEFEA0 /* Assets.xcassets */,
 				0A3144ED26F4929900EEFEA0 /* Preview Content */,
+				0A31450026F4E84800EEFEA0 /* RouteManager.swift */,
 			);
 			path = MapPlotting;
 			sourceTree = "<group>";
@@ -65,6 +76,23 @@
 				0A3144EE26F4929900EEFEA0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0A3144F526F492A600EEFEA0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A3144E926F4929900EEFEA0 /* ContentView.swift */,
+				0A3144F626F492C700EEFEA0 /* MapView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0A3144FD26F4E70800EEFEA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A3144FE26F4E71900EEFEA0 /* AnnotationItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +155,7 @@
 			files = (
 				0A3144EF26F4929900EEFEA0 /* Preview Assets.xcassets in Resources */,
 				0A3144EC26F4929900EEFEA0 /* Assets.xcassets in Resources */,
+				0A3144FB26F497DE00EEFEA0 /* Running.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A31450126F4E84800EEFEA0 /* RouteManager.swift in Sources */,
 				0A3144EA26F4929900EEFEA0 /* ContentView.swift in Sources */,
+				0A3144FF26F4E71900EEFEA0 /* AnnotationItem.swift in Sources */,
+				0A3144F726F492C700EEFEA0 /* MapView.swift in Sources */,
 				0A3144E826F4929900EEFEA0 /* MapPlottingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
