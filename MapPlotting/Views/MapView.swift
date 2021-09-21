@@ -6,68 +6,50 @@
 //
 
 import SwiftUI
-import CoreLocationUI
 import MapKit
 
-struct MapView: View {
-    @State private var region: MKCoordinateRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: MapDefaults.latitude, longitude: MapDefaults.longitude),
-        span: MKCoordinateSpan(latitudeDelta: MapDefaults.zoom, longitudeDelta: MapDefaults.zoom))
+struct MapView: UIViewRepresentable {
     
-    private var routeManager = RouteManager()
+    let region: MKCoordinateRegion
+    let lineCoordinates: [CLLocationCoordinate2D]
     
-    @State private var annotationItems: [AnnotationItem] = []
-    
-    private enum MapDefaults {
-        static let latitude = 56.131
-        static let longitude = 10.199
-        static let zoom = 0.03
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        mapView.region = region
+        
+        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+        mapView.addOverlay(polyline)
+        
+        return mapView
     }
     
-    var body: some View {
-        VStack {
-            Map(coordinateRegion: $region,
-                interactionModes: .all,
-                annotationItems: annotationItems) { item in
-                MapAnnotation(coordinate: item.coordinate) {
-                    Image(systemName: "circle.fill").resizable().frame(width: 10, height: 10)
-                        .foregroundColor(item.tint)
-                }
-            }
-            HStack{
-                Button(action: {
-                    annotationItems = routeManager.rawRoute
-                }) {
-                    Text("Raw Route")
-                        .foregroundColor(.white)
-                        .font(.body)
-                        .padding(10)
-                }.background(Color.yellow).cornerRadius(40)
-                
-                Button(action: {
-                    annotationItems = routeManager.meanRoute
-                }) {
-                    Text("Mean Route")
-                        .foregroundColor(.white)
-                        .font(.body)
-                        .padding(10)
-                }.background(Color.orange).cornerRadius(40)
-                
-                Button(action: {
-                    annotationItems = routeManager.medianRoute
-                }) {
-                    Text("Median Route")
-                        .foregroundColor(.white)
-                        .font(.body)
-                        .padding(10)
-                }.background(Color.red).cornerRadius(40)
-            }
-        }
+    func updateUIView(_ view: MKMapView, context: Context) {
+        view.removeOverlays(view.overlays)
+        let polyline = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
+        view.addOverlay(polyline)
     }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
 }
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
+class Coordinator: NSObject, MKMapViewDelegate {
+    var parent: MapView
+    
+    init(_ parent: MapView) {
+        self.parent = parent
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let routePolyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: routePolyline)
+            renderer.strokeColor = UIColor.systemGreen
+            renderer.lineWidth = 5
+            return renderer
+        }
+        return MKOverlayRenderer()
     }
 }
